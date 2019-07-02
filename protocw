@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+INSTALL_BASE_URL="https://raw.githubusercontent.com/lucasls/protoc-wrapper"
+
 basedir=$(dirname "$0")
 
 lower() {
@@ -14,10 +16,58 @@ println() {
     echo "$1" >&2
 }
 
+configure() {
+    print "Target protoc version: "
+    read version
+
+    echo "protoc_version=$version" > $basedir/protocw.env
+    println "Version set to $version, to change either edit protocw.env or run protocw --configure"
+    exit
+}
+
+help() {
+    println "** Protoc Wrapper Help: **"
+    println ""
+    println "  --configure    Sets up what version of protoc to use"
+    println "  --self-update  Updates Protoc Wrapper to the newest version"
+
+    if [ -z $protoc_version ]
+    then
+        exit
+    fi
+
+    println ""
+    println "** Protoc Help **"
+    println ""
+}
+
+self_update() {
+    println "Starting Protoc Wrapper self update..."
+    println ""
+
+    eval "$(curl -fsSL $INSTALL_BASE_URL/install.sh)"
+    exit
+}
+
 # Start
+
+if [ "$1" = "--configure" ]
+then
+    configure
+fi
+
+if [ "$1" = "--self-update" ]
+then
+    self_update
+fi
 
 touch $basedir/protocw.env
 source $basedir/protocw.env
+
+if [ "$1" = "--help" ]
+then
+    help
+fi
 
 if [ -z $protoc_version ]
 then
