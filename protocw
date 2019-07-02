@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+basedir=$(dirname "$0")
+
+lower() {
+    echo $1 | tr '[:upper:]' '[:lower:]'
+}
+
+print() {
+    printf "$1" >&2
+}
+
+println() {
+    echo "$1" >&2
+}
+
+# Start
+
+touch $basedir/protocw.env
+source $basedir/protocw.env
+
+if [ -z $protoc_version ]
+then
+    println "protoc_version not set in protocw.env"
+    exit -1
+fi
+
+mkdir -p "$basedir/.protocw"
+filename="$basedir/.protocw/protoc-$protoc_version"
+
+if [ ! -f $filename ]
+then
+    if [ $(lower $(uname))  = "darwin" ]
+    then
+        osname="osx"
+    else
+        osname="linux"
+    fi
+    osarch=$(uname -m)
+
+    print "Downloading Protoc $protoc_version... "
+    curl "https://repo1.maven.org/maven2/com/google/protobuf/protoc/$protoc_version/protoc-$protoc_version-$osname-$osarch.exe" -o $filename --fail --silent
+
+    last_error=$?
+
+    if [ $last_error -ne 0 ]; then
+        println "Error"
+        println "Could not download protoc, please check if version $protoc_version is a valid version in protoc Maven Repository"
+        exit $last_error
+    fi
+
+    println "Done"
+
+    chmod +x $filename
+fi
+
+"$filename" "$@"
