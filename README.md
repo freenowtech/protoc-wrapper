@@ -5,7 +5,7 @@ A simple wrapper for Google Protocol Buffer's "protoc" utility
 ## Install
 
 ```bash
-/usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/lucasls/protoc-wrapper/master/install.sh)"
+/usr/bin/env bash -c "$(curl -fsSL http://bit.ly/lucasls-protocw)"
 ```
 
 The target version will be asked during installation.
