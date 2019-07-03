@@ -16,7 +16,7 @@ After that you'll have 2 new files:
 * `protocw`: the executable wrapper
 * `protocw.properties`: the config file where the target version is set
 
-Commit both to source control and set `.protocw` to be ignored (e.g. `.gitignore`)
+Commit both files to source control and make sure the `.protocw` folder gets ignored (i.e. add it to `.gitignore`)
 
 ## Usage
 
