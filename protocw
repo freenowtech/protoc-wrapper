@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-## This is a wrapper for Protocol Buffer's protoc utility                           ##
+## This is an auto-generated wrapper for Protocol Buffer's protoc utility           ##
 ##                                                                                  ##
-## This file and its companion protocw.properties is expected to be committed into  ##
-## source control repository, while .protocw folder is expected to be ignored       ##
+## This file and its companion protocw.properties isare expected to be committed    ##
+## into source control repository, while .protocw folder is expected to be ignored  ##
+##                                                                                  ##
+##  Don't edit this file directly                                                   ##
 ##                                                                                  ##
 ## For help, run `./protocw --help` or refer to the project Github                  ##
 ##                                                                                  ##
@@ -29,11 +31,12 @@ println() {
 }
 
 configure() {
-    print "Target protoc version: "
+    println ""
+    print "What's the target protoc version? "
     read version
 
     echo "protoc_version=$version" > $basedir/protocw.properties
-    println "Version set to $version, to change either edit protocw.properties or run protocw --configure"
+    println "Version set to $version, to change it run protocw --configure"
     exit
 }
 
