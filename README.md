@@ -31,4 +31,5 @@ Run `./protocw --help` to see the wrapper help and protoc help at once
 ## Author  
 
 Lucas Laurindo dos Santos
+
 https://github.com/lucasls
