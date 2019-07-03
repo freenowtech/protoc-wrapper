@@ -3,10 +3,10 @@
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 ## This is an auto-generated wrapper for Protocol Buffer's protoc utility           ##
 ##                                                                                  ##
-## This file and its companion protocw.properties isare expected to be committed    ##
-## into source control repository, while .protocw folder is expected to be ignored  ##
-##                                                                                  ##
 ## Don't edit this file directly                                                    ##
+##                                                                                  ##
+## This file and its companion protocw.properties are expected to be committed      ##
+## into source control repository, while .protocw folder is expected to be ignored  ##
 ##                                                                                  ##
 ## For help, run `./protocw --help` or refer to the project Github                  ##
 ##                                                                                  ##
