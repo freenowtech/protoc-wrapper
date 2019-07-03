@@ -14,7 +14,7 @@
 ## Lucas Laurindo dos Santos | https://github.com/lucasls                           ##
 ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 
-INSTALL_BASE_URL="https://raw.githubusercontent.com/freenowtech/protoc-wrapper"
+INSTALL_BASE_URL="https://raw.githubusercontent.com/freenowtech/protoc-wrapper/master"
 
 basedir=$(dirname "$0")
 
