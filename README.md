@@ -15,6 +15,7 @@ Follow the instruction to set the target protoc version
 After that you'll have 2 new files:
 * `protocw`: the executable wrapper
 * `protocw.properties`: the config file where the target version is set
+
 Commit both to source control and set `.protocw` to be ignored (e.g. `.gitignore`)
 
 ## Usage
