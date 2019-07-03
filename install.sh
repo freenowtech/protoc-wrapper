@@ -11,7 +11,7 @@ println() {
 }
 
 print "Downloading Protoc Wrapper... "
-curl "$INSTALL_BASE_URL/protocw" -o protocw.new --fail --silent
+curl -fsSL "$INSTALL_BASE_URL/protocw" -o protocw.new
 last_error=$?
 
 if [ $last_error -ne 0 ]; then
