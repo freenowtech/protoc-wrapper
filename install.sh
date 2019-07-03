@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-INSTALL_BASE_URL="https://raw.githubusercontent.com/lucasls/protoc-wrapper/master"
+INSTALL_BASE_URL="https://raw.githubusercontent.com/freenowtech/protoc-wrapper/master"
 
 print() {
     printf "$1" >&2
@@ -36,7 +36,7 @@ chmod +x protocw
 println "Cleaning up"
 rm -f protocw.old
 
-if [ ! -f protocw.env ]
+if [ ! -f protocw.properties ]
 then
     ./protocw --configure
 fi

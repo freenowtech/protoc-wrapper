@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
-INSTALL_BASE_URL="https://raw.githubusercontent.com/lucasls/protoc-wrapper"
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+## This is a wrapper for Protocol Buffer's protoc utility                           ##
+##                                                                                  ##
+## This file and its companion protocw.properties is expected to be committed into  ##
+## source control repository, while .protocw folder is expected to be ignored       ##
+##                                                                                  ##
+## For help, run `./protocw --help` or refer to the project Github                  ##
+##                                                                                  ##
+## Protoc Wrapper | https://github.com/freenow/protoc-wrapper                       ##
+## Lucas Laurindo dos Santos | https://github.com/lucasls                           ##
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
+
+INSTALL_BASE_URL="https://raw.githubusercontent.com/freenowtech/protoc-wrapper"
 
 basedir=$(dirname "$0")
 
@@ -20,8 +32,8 @@ configure() {
     print "Target protoc version: "
     read version
 
-    echo "protoc_version=$version" > $basedir/protocw.env
-    println "Version set to $version, to change either edit protocw.env or run protocw --configure"
+    echo "protoc_version=$version" > $basedir/protocw.properties
+    println "Version set to $version, to change either edit protocw.properties or run protocw --configure"
     exit
 }
 
@@ -61,8 +73,8 @@ then
     self_update
 fi
 
-touch $basedir/protocw.env
-source $basedir/protocw.env
+touch $basedir/protocw.properties
+source $basedir/protocw.properties
 
 if [ "$1" = "--help" ]
 then
@@ -71,7 +83,7 @@ fi
 
 if [ -z $protoc_version ]
 then
-    println "protoc_version not set in protocw.env"
+    println "protoc_version not set in protocw.properties"
     exit -1
 fi
 
