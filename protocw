@@ -9,6 +9,7 @@
 ## into source control repository, while .protocw folder is expected to be ignored  ##
 ##                                                                                  ##
 ## For help, run `./protocw --help` or refer to the project Github                  ##
+## To update, run `./protocw --self-update`                                         ##
 ##                                                                                  ##
 ## Protoc Wrapper | https://github.com/freenowtech/protoc-wrapper                   ##
 ## Lucas Laurindo dos Santos | https://github.com/lucasls                           ##
