@@ -38,6 +38,29 @@ configure() {
 
     echo "protoc_version=$version" > $basedir/protocw.properties
     println "Version set to $version, to change it run protocw --configure"
+
+    if [ -f pom.xml ]
+    then
+        print "changing pom.xml ..."
+        sed -E -i "" "s /usr/local/bin/protoc(-[0-9]+\.[0-9]+\.[0-9]+)? ./protocw g" pom.xml
+        println " done."
+    else
+        println "pom.xml doesn't exist"
+    fi
+
+    if [ -d .git ]
+    then
+        print "git detected, adding .protocw to .gitignore ..."
+
+        if ! grep -q ".protocw" .gitignore
+        then
+            echo ".protocw" >> .gitignore
+            println " done."
+        else
+            println " already exists."
+        fi
+    fi
+
     exit
 }
 
