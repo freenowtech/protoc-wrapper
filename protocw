@@ -54,7 +54,7 @@ configure() {
 
         if ! grep -q ".protocw" .gitignore
         then
-            echo ".protocw" >> .gitignore
+            echo "\n.protocw" >> .gitignore
             println " done."
         else
             println " already exists."
