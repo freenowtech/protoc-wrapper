@@ -5,18 +5,25 @@ A simple wrapper for Google Protocol Buffer's "protoc" utility
 
 ## Install
 
-Open the target folder in terminal and paste:
+Open the target folder (usually the root of the project) in terminal and paste:
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/freenowtech/protoc-wrapper/master/install.sh)"
 ```
 
 Follow the instruction to set the target protoc version
+
+## Commit
+
 After that you'll have 2 new files:
 * `protocw`: the executable wrapper
 * `protocw.properties`: the config file where the target version is set
 
-Commit both files to source control and make sure the `.protocw` folder gets ignored (i.e. add it to `.gitignore`)
+Additionally:
+* If you are using Git, `.protocw` folder will be added to your `.gitignore`
+* If you are using Maven, the installer will try to replace the existing binary call with a call to the wrapper
+
+(If not using Git, please make sure `.protocw` folder is marked as ignored on your VCS of choice)
 
 ## Usage
 
