@@ -41,16 +41,14 @@ configure() {
 
     if [ -f pom.xml ]
     then
-        println ""
-        print "Maven detected, replacing existing calls to protoc with protocw..."
+        print "* Maven detected, replacing existing calls to protoc with protocw if necessary..."
         sed -E -i "" "s /usr/local/bin/protoc(-[0-9]+\.[0-9]+\.[0-9]+)? ./protocw g" pom.xml
         println " done."
     fi
 
     if [ -d .git ]
     then
-        println ""
-        print "Git detected, adding .protocw to .gitignore if necessary..."
+        print "* Git detected, adding .protocw to .gitignore if necessary..."
 
         if ! grep -q ".protocw" .gitignore
         then
@@ -58,7 +56,8 @@ configure() {
         fi
         println " done."
     fi
-
+    
+    println ""
     exit
 }
 
