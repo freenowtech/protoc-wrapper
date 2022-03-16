@@ -122,9 +122,15 @@ then
     else
         osname="linux"
     fi
-    osarch=$(uname -m)
+    if [ $(uname -m)  = "arm64" ]
+    then
+        osarch="aarch_64"
+        println "aarch_64 detected; make sure protoc_version >= 3.17.3 for osx and >= 3.10.0 for linux"
+    else
+        osarch=$(uname -m)
+    fi
 
-    print "Downloading Protoc $protoc_version... "
+    print "Downloading Protoc version: $protoc_version-$osname-$osarch... "
     curl "https://repo1.maven.org/maven2/com/google/protobuf/protoc/$protoc_version/protoc-$protoc_version-$osname-$osarch.exe" -o $filename --fail --silent
 
     last_error=$?
