@@ -31,6 +31,14 @@ println() {
     echo "$1" >&2
 }
 
+version_lte() {
+    [  "$1" = "`echo -e "$1\n$2" | sort -V | head -n1`" ]
+}
+
+version_lt() {
+    [ "$1" = "$2" ] && return 1 || version_lte $1 $2
+}
+
 configure() {
     println ""
     print "What's the target protoc version? "
@@ -122,10 +130,19 @@ then
     else
         osname="linux"
     fi
-    if [ $(uname -m)  = "arm64" ]
+    if [ $(uname -m) = "arm64" ]
     then
-        osarch="aarch_64"
-        println "aarch_64 detected; make sure protoc_version >= 3.17.3 for osx and >= 3.10.0 for linux"
+        if [ $osname = "osx" ] && version_lt $protoc_version "3.17.3"
+        then
+            println "WARN: arm64 on osx detected, downloading x86_64 binaries; use protoc_version >= 3.17.3 for native binaries on osx"
+            osarch="x86_64"
+        elif [ $osname = "linux" ] && version_lt $protoc_version "3.10.0"
+        then
+            println "ERROR: only protoc_version >= 3.10.0 is supported for arm64 on linux"
+            exit -1
+        else
+            osarch="aarch_64"
+        fi
     else
         osarch=$(uname -m)
     fi
