@@ -3,6 +3,14 @@
 
 A simple wrapper for Google Protocol Buffer's "protoc" utility
 
+## Troubleshooting ⚠️
+
+You might encounter issues running this tool on ARM processors, e.g. on new MacBooks with M1+ processors. 
+This can be quick fixed by upgrading Protoc Wrapper to the latest version with following command:
+```sh
+./protocw --self-update
+```
+
 ## Install
 
 Open the target folder (usually the root of the project) in terminal and paste:
