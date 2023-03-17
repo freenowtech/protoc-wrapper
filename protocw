@@ -85,6 +85,23 @@ help() {
     println ""
 }
 
+version() {
+    if ! version_lt $protoc_version "3.22.0"
+    then
+        VERSION_DISCLAIMER="Since version 3.22.0, the major version is no longer part of the returned version number"
+        if [ "$keep_major_version_number" = "true" ]
+        then
+            println "INFO: $VERSION_DISCLAIMER, returning backwards compatible version number"
+            println 
+            echo "libprotoc $protoc_version"
+            exit 0
+        else
+            println "WARN: $VERSION_DISCLAIMER, set \`keep_major_version_number=true\` in \`protocw.properties\` to keep the major version number"
+            println 
+        fi
+    fi
+}
+
 self_update() {
     println "Starting Protoc Wrapper self update..."
     println ""
@@ -161,6 +178,11 @@ then
     println "Done"
 
     chmod +x $filename
+fi
+
+if [ "$1" = "--version" ]
+then
+    version
 fi
 
 "$filename" "$@"
